@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, :except => [:index, :show]
 
   # GET /posts
   # GET /posts.json
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   def show
     # @post = Post.find(params[:id])
     # set_post 에 있기 때문에 없어도 된다!!
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @post }

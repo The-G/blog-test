@@ -10,12 +10,22 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  # <<: *default
+  # database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: blog_test_development
+  pool: 5
+  username: root
+  password: # password 지정 안해서 null
+  socket: /tmp/mysql.sock
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+
+# test를 잘 사용할 줄은 모르지만,, test도 mysql로 셋팅해야 하는데... 
 test:
   <<: *default
   database: db/test.sqlite3

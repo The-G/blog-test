@@ -1,4 +1,4 @@
-<%= @post.tags.build %>
+<% @post.tags.build %>
 <%= form_with(model: post, local: true) do |post_form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">

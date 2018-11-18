@@ -1,8 +1,8 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= @post.tags.build %>
+<%= form_with(model: post, local: true) do |post_form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,21 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= post_form.label :name %>
+    <%= post_form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= post_form.label :title %>
+    <%= post_form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= post_form.label :content %>
+    <%= post_form.text_area :content %>
   </div>
+  <h2>Tags</h2>
+  <%= render :partial => 'tags/form',
+              :locals => {:form => post_form} %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= post_form.submit %>
   </div>
 <% end %>

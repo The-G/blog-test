@@ -18,11 +18,12 @@ class PostsController < ApplicationController
   def show
     # @post = Post.find(params[:id])
     # set_post 에 있기 때문에 없어도 된다!!
+    @comments = @post.comments.all
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @post }
     end
-
   end
 
   # GET /posts/new
@@ -90,7 +91,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
-    endß
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

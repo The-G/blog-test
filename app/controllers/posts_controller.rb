@@ -18,8 +18,7 @@ class PostsController < ApplicationController
   def show
     # @post = Post.find(params[:id])
     # set_post 에 있기 때문에 없어도 된다!!
-    @comments = @post.comments.all
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @post }
